@@ -1,11 +1,10 @@
 const express = require('express');
-
+const chat = require('./chat.js')
 const mongoose = require('mongoose');
 const Register = require('./users.js');
 const bodyParser = require('body-parser');
 const app = express();
 const ejs = require('ejs');
-
 
 const uri = "mongodb+srv://AdminBloodhub:IeowaMIAljoPPgEE@bloodhubcluster.z5jed.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
@@ -21,6 +20,11 @@ app.use(express.static(__dirname + '/public'));
 app.get(['/'], function (req,res){
     res.render('index');
 })
+
+app.get(['/about'], function (req,res){
+    res.render('about');
+})
+
 
 app.get('/register', function (req,res){
     res.render('register');
@@ -46,11 +50,17 @@ app.post('/login', async(req,res)=>{
             })
         })
 
+        chat;
+
         app.get("/logout",(req,res)=>{
             res.redirect("/");
         });
 
-        res.status(201).render("loggedIn",{data:userLogin,search:search,abcd:ae})
+        app.get("/chat", (req,res)=>{
+            res.render("chat",{d:userLogin})
+        })
+        
+        res.render("loggedIn",{data:userLogin,search:search,abcd:ae})
         
       }else{
         res.render('indexError')
@@ -93,6 +103,8 @@ app.post('/signup', async (req,res)=>{
         res.render('register')
     }
 })
+
+
 
 const PORT = process.env.PORT || 5555;  ``
 

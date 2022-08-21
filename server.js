@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const ejs = require('ejs');
 
-const uri = "mongodb+srv://AdminBloodhub:IeowaMIAljoPPgEE@bloodhubcluster.z5jed.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://coterie:coterie123@cluster0.m8buz9g.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error',error => console.log(error));
